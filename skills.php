@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit;
+}
+
 require 'crud_bootstrap.php';
 $pid=profile_id($conn); $rows=[];
 $stmt=mysqli_prepare($conn,'SELECT id,skill_name,skill_level FROM skill WHERE profile_id = ? ORDER BY id DESC');

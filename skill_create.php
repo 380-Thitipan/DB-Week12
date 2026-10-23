@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit;
+}
 require 'crud_bootstrap.php';
 $error=''; $name=''; $level='Beginner';
 if($_SERVER['REQUEST_METHOD']==='POST'){
